@@ -47,6 +47,10 @@ class ShopsViewModel : BaseViewModel() {
     val paymentStatus: LiveData<Boolean>
         get() = _paymentStatus
 
+    private val _paidStatus: MutableLiveData<Boolean> = MutableLiveData()
+    val paidStatus: LiveData<Boolean>
+        get() = _paidStatus
+
     private val _isShoppedOut: MutableLiveData<Boolean> = MutableLiveData()
     val isShoppedOut: LiveData<Boolean>
         get() = _isShoppedOut
@@ -205,6 +209,17 @@ class ShopsViewModel : BaseViewModel() {
             val orderItemRequest = OrderItemRequest(orderId)
             shopRepository.getPendingOrderItemsList(orderItemRequest).let {
                 _orderItemsList.value = it
+            }
+        }
+    }
+
+    fun submitCreatePaidAmount(shop_login_id: String, amount:String, payment_mode: String, pay_remarks: String,note: String){
+
+        var paidRequestModel =PaidAmountRequestModel(shop_login_id,amount,payment_mode,pay_remarks,note,AppPreferences.userId)
+
+        viewModelScope.launch {
+            shopRepository.submitCreatedPaidAmount(paidRequestModel).collect {
+                _paidStatus.value = it
             }
         }
     }

@@ -13,6 +13,7 @@ import com.espy.onecallsys.preference.AppPreferences
 import com.espy.onecallsys.ui.products.models.TodayMyOrder
 import com.espy.onecallsys.ui.shops.models.NewShopMultiPartData
 import com.espy.onecallsys.ui.shops.models.ShopPayHistory
+import com.espy.onecallsys.ui.shops.models.ShopPayPaidAmountRepoData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -318,6 +319,45 @@ class ShopRepository: BaseRepository() {
             val response = RestServiceProvider
                 .getShopService()
                 .getShopCollectionHistoryAsync(request)
+                .await()
+
+            if (response.data.any()){
+                Result.Success(response.data)
+            }else{
+                Result.Error(Exception("error"))
+            }
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+
+    fun submitCreatedPaidAmount(paidRequestModel: PaidAmountRequestModel): Flow<Boolean>{
+        return flow {
+            try {
+                val response =
+                    RestServiceProvider
+                        .getShopService()
+                        .submitCreatePaidAmountAsync(paidRequestModel)
+                        .await()
+
+                if (response.isError.not()){
+                    emit(true)
+                }else{
+                    emit(false)
+                }
+            } catch (e: Exception) {
+                emit(false)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+
+    suspend fun getShopCollectionPaidAmount(request: ShopCollectionPaidAmountRequest): Result<List<ShopPayPaidAmountRepoData>> {
+        return try {
+            val response = RestServiceProvider
+                .getShopService()
+                .getShopCollectionPaidAmountAsync(request)
                 .await()
 
             if (response.data.any()){

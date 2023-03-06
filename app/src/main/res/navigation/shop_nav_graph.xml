@@ -14,10 +14,16 @@
         <argument android:name="shop"
             app:argType="com.espy.onecallsys.api.models.shops.Shop"
             app:nullable="true"
-            android:defaultValue="@null"/>
+            android:defaultValue="@null"
+            />
         <action
             android:id="@+id/action_shopDetailsFragment_to_shopCollectionHistoryFragment"
             app:destination="@id/shopCollectionHistoryFragment">
+        </action>
+
+        <action
+            android:id="@+id/action_shopDetailsFragment_to_shopCollectionPaidAmountReportFragment"
+            app:destination="@id/shopCollectionPaidAmountReportFragment">
         </action>
 
     </fragment>
@@ -29,5 +35,12 @@
         android:name="com.espy.onecallsys.ui.shops.view.ShopCollectionHistoryFragment"
         android:label="Payment History"
         tools:layout="@layout/fragment_shop_collection_history">
+    </fragment>
+
+    <fragment
+        android:id="@+id/shopCollectionPaidAmountReportFragment"
+        android:name="com.espy.onecallsys.ui.shops.view.ShopCollectionPaidAmountReportFragment"
+        android:label="Paid Amount Report"
+        tools:layout="@layout/fragment_shop_collection_paid_amount_report">
     </fragment>
 </navigation>

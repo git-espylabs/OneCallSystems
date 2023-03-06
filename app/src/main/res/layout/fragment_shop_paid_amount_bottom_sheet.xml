@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/avenir_heavy"
+                android:text="PAID AMOUNT"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/btnClose"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tvTitle"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/promptAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/avenir_medium"
+                android:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnClose" />
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/avenir_light"
+                android:gravity="left|center"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:padding="7dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/promptAmount" />
+
+
+            <TextView
+                android:id="@+id/promptPayMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/avenir_medium"
+                android:text="@string/paymode"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAmount" />
+
+            <Spinner
+                android:id="@+id/spnPayTyp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/bg_edittext"
+                android:drawSelectorOnTop="true"
+                android:paddingLeft="7dp"
+                app:layout_constraintTop_toBottomOf="@+id/promptPayMode"
+                tools:entries="@array/pay_types_new" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_drop_down"
+                app:layout_constraintBottom_toBottomOf="@+id/spnPayTyp"
+                app:layout_constraintEnd_toEndOf="@+id/spnPayTyp"
+                app:layout_constraintHorizontal_bias="0.97"
+                app:layout_constraintStart_toStartOf="@+id/spnPayTyp"
+                app:layout_constraintTop_toTopOf="@+id/spnPayTyp" />
+
+
+            <TextView
+                android:id="@+id/payRemarksTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/avenir_medium"
+                android:text="Pay Remarks"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spnPayTyp" />
+
+            <EditText
+                android:id="@+id/payRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/avenir_light"
+                android:gravity="left|center"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="15"
+                android:padding="7dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/payRemarksTitle" />
+
+            <TextView
+                android:id="@+id/noteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/avenir_medium"
+                android:text="Note"
+                android:maxLines="50"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payRemarks" />
+
+
+            <EditText
+                android:id="@+id/payNote"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/avenir_light"
+                android:gravity="left|center"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:padding="7dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
+
+
+            <Button
+                android:id="@+id/btnSubmit"
+                style="@style/EspyButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_cap_button"
+                android:fontFamily="@font/avenir_medium"
+                android:padding="14dp"
+                android:text="@string/submit"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/payNote" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

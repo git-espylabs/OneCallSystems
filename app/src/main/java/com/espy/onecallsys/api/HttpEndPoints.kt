@@ -44,6 +44,9 @@ internal class HttpEndPoints {
         const val ONECALL_DELIVERY_SHOPS_LIST2 = "api/salesexes_shop_orders"
         const val ONECALL_TODAY_MY_ORDERS_LIST = "api/todaymyorders"
         const val ONECALL_SHOP_COLLECTION_HISTORY_LIST = "api/shopcollectionhistory"
+        const val ONECALL_SHOP_CREATE_PAID_AMOUNT = "api/create_paid_amount"
+
+        const val ONECALL_SHOP_COLLECTION_PAID_AMOUNT_LIST = "api/list_paid_amount"
     }
 
 }

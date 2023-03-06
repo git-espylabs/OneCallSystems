@@ -25,6 +25,7 @@ import com.espy.onecallsys.ui.base.BaseViewModel
 import com.espy.onecallsys.ui.products.models.ImageSlide
 import com.espy.onecallsys.ui.products.models.TodayMyOrder
 import com.espy.onecallsys.ui.shops.models.ShopPayHistory
+import com.espy.onecallsys.ui.shops.models.ShopPayPaidAmountRepoData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -95,6 +96,11 @@ class HomeViewModel : BaseViewModel() {
     private val _shopCollectionHistoryList: MutableLiveData<Result<List<ShopPayHistory>>> = MutableLiveData()
     val shopCollectionHistoryList: LiveData<Result<List<ShopPayHistory>>>
         get() = _shopCollectionHistoryList
+
+
+    private val _shopCollectionPaidAmtList: MutableLiveData<Result<List<ShopPayPaidAmountRepoData>>> = MutableLiveData()
+    val shopCollectionPaidAmtList: LiveData<Result<List<ShopPayPaidAmountRepoData>>>
+        get() = _shopCollectionPaidAmtList
 
     init {
         if (null == InstanceManager.profile){
@@ -239,6 +245,14 @@ class HomeViewModel : BaseViewModel() {
         viewModelScope.launch {
             shopRepository.getShopCollectionHistory(ShopCollectionHistoryRequest(shopId, fromDate, toDate)).let {
                 _shopCollectionHistoryList.value = it
+            }
+        }
+    }
+
+    fun getShopCollectionPaidAmtRpt(shopId: String, fromDate: String, toDate: String){
+        viewModelScope.launch {
+            shopRepository.getShopCollectionPaidAmount(ShopCollectionPaidAmountRequest(shopId)).let {
+                _shopCollectionPaidAmtList.value = it
             }
         }
     }

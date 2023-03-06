@@ -59,6 +59,20 @@ class ShopDetailsFragment:
             R.id.payHistory ->{
                 findNavController().navigate(ShopDetailsFragmentDirections.actionShopDetailsFragmentToShopCollectionHistoryFragment())
             }
+
+            R.id.paidAmount ->{
+
+                    ShopPaidAmountBottomSheetDialogFragment(viewModel, args.shop?.id?:"0").show(
+                        childFragmentManager,
+                        "ShopPaidAmountFragment"
+                    )
+
+            }
+            R.id.paidAmountReport ->{
+                findNavController().navigate(ShopDetailsFragmentDirections.actionShopDetailsFragmentToShopCollectionPaidAmountReportFragment())
+
+
+            }
         }
     }
 

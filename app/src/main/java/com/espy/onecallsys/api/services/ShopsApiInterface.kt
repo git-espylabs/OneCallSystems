@@ -105,4 +105,17 @@ interface ShopsApiInterface {
     fun getShopCollectionHistoryAsync(
         @Body request: ShopCollectionHistoryRequest
     ): Deferred<ShopCollectionHistoryResp>
+
+
+    @POST(HttpEndPoints.ONECALL_SHOP_CREATE_PAID_AMOUNT)
+    fun submitCreatePaidAmountAsync(
+        @Body request: PaidAmountRequestModel
+    ): Deferred<TempResponse>
+
+
+
+    @POST(HttpEndPoints.ONECALL_SHOP_COLLECTION_PAID_AMOUNT_LIST)
+    fun getShopCollectionPaidAmountAsync(
+        @Body request: ShopCollectionPaidAmountRequest
+    ): Deferred<ShopCollectionPaidAmountResp>
 }

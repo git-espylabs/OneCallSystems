@@ -86,6 +86,8 @@
 
     <string name="today_my_orders">Today My Orders</string>
     <string name="shop_collection_history">Payment History</string>
+    <string name="paid_amount">PAID AMOUNT</string>
+    <string name="paid_amount_report">PAID AMOUNT REPORT</string>
 
     <string-array name="expense_types">
         <item>Food</item>
@@ -102,5 +104,11 @@
         <item>Select Route</item>
         <item>Test 1</item>
         <item>Test 2</item>
+    </string-array>
+
+    <string-array name="pay_types_new">
+        <item>Cash</item>
+        <item>Card</item>
+        <item>Gpay</item>
     </string-array>
 </resources>

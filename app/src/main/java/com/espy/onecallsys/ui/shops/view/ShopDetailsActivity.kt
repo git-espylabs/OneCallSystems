@@ -98,6 +98,10 @@ class ShopDetailsActivity : BaseActivity<ActivityShopDetailsBinding>(
             controller.currentDestination?.id == R.id.shopDetailsFragment -> {
                 finish()
             }
+            controller.currentDestination?.id == R.id.shopCollectionPaidAmountReportFragment -> {
+                controller.popBackStack()
+
+            }
             supportFragmentManager.backStackEntryCount > 0 -> {
                 super.onBackPressed()
             }
